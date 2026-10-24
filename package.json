@@ -1,0 +1,24 @@
+{
+  "name": "kuroyami",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Kuroyami WhatsApp AI bot using Gemini and Baileys",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/watch-and-run.js",
+    "dev": "node scripts/watch-and-run.js",
+    "bot": "node src/index.js",
+    "check": "node scripts/check-syntax.js",
+    "clearsession": "node scripts/clearsession.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "7.0.0-rc14",
+    "dotenv": "^16.4.7",
+    "pino": "^9.6.0",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.33.5"
+  }
+}
