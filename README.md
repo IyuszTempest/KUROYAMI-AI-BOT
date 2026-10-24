@@ -1,55 +1,45 @@
-# Kuroyami — WhatsApp AI (starter)
+# Kuroyami — Bot WhatsApp AI - Open Source Project
 
-Versi awal bot publik Kuroyami: Baileys + Gemini, fokus membalas chat grup ketika Kuro di-mention atau di-reply.
+Versi awal bot publik Kuroyami: Baileys whiskeysockets + Gemini, fokus membalas chat grup ketika bot di-mention atau di-reply.
 
 ## Fitur awal
 - Login WhatsApp via QR dan menyimpan sesi di `auth_info/`.
 - Hanya membalas pesan grup (default).
-- Hanya merespons ketika di-mention atau ketika pesan membalas pesan Kuro.
+- Hanya merespons ketika di-mention atau ketika pesan membalas pesan bot.
 - Konteks percakapan singkat per grup (disimpan di RAM; hilang saat proses restart).
 - Cooldown per grup, batas panjang jawaban, dan pesan error sederhana.
-- OpenRouter model bisa diganti lewat `.env`.
+- API dan model bisa diganti lewat `.env`.
 
 ## Prasyarat
 - Node.js 20 atau lebih baru.
 - Google Gemini API key.
 - WhatsApp di ponsel untuk menautkan perangkat.
 
-## Instalasi Windows (PowerShell)
-1. Ekstrak ZIP ke folder yang kamu inginkan.
-2. Buka PowerShell di folder `kuroyami-starter`.
-3. Jalankan:
-
-```powershell
+## Install
+```bash
 npm install
-Copy-Item .env.example .env
-notepad .env
 ```
 
-4. Di `.env`, isi `OPENROUTER_API_KEY` dengan API key milikmu. Jangan pernah mengirim API key ke chat atau mengunggah `.env` ke GitHub.
-5. Model Gemini dikonfigurasi lewat `GEMINI_MODEL` pada `.env`. Pastikan `GEMINI_API_KEY` terisi.
-6. Jalankan bot:
-
-```powershell
+## Start
+```bash
 npm start
 ```
 
-7. Scan QR yang muncul di terminal melalui WhatsApp > Perangkat tertaut > Tautkan perangkat.
-
-## Cara memakai
-- Masukkan Kuro ke grup.
-- Mention/tag Kuro lalu tulis pesan, atau reply pesan Kuro dan tulis balasan.
-- Secara default Kuro tidak menanggapi semua pesan biasa agar tidak spam dan menghemat kuota.
+## Cara mengunakan
+- Masukkan bot ke grup.
+- Mention/tag bot lalu tulis pesan, atau reply pesan Kuro dan tulis balasan.
+- Secara default bot tidak menanggapi semua pesan biasa agar tidak spam dan menghemat kuota.
 
 ## Konfigurasi
-- `OPENROUTER_MODEL`: default `openrouter/free`.
+- `BOT_NAME`: nama bot.
+- `GEMINI_MODEL`: default `gemini-3.5-flash-lite`.
 - `HISTORY_MESSAGES`: jumlah pesan konteks yang disimpan di RAM per grup (default 8 pesan).
 - `MAX_OUTPUT_TOKENS`: batas panjang respons AI.
 - `COOLDOWN_SECONDS`: jeda minimum antarrespons di grup.
 - `GROUP_ONLY`: `true` untuk grup saja; `false` mengizinkan chat pribadi juga.
 
 ## Catatan penting
-- API model gratis punya batas yang bisa berubah. `openrouter/free` merutekan ke model gratis yang tersedia; perilaku dan ketersediaannya dapat berubah.
+- API model gratis punya batas yang bisa berubah. perilaku dan ketersediaannya dapat berubah.
 - Kode ini adalah starter minimal, belum siap untuk skala publik besar. Untuk banyak grup, tambahkan antrean permintaan, rate limiting global, database, logging yang aman, dan fallback provider.
 - Hormati privasi anggota grup. Jangan mengarsipkan atau memproses seluruh percakapan tanpa kebutuhan dan persetujuan yang sesuai.
 - Baileys adalah library tidak resmi. Penggunaan otomatisasi WhatsApp punya risiko akun dibatasi; gunakan dengan bijak.
